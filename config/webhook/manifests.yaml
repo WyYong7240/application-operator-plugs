@@ -12,12 +12,34 @@ webhooks:
       namespace: system
       path: /mutate-apps-wuyong-cn-v1-application
   failurePolicy: Fail
+  matchPolicy: Exact
   name: mapplication-v1.kb.io
   rules:
   - apiGroups:
     - apps.wuyong.cn
     apiVersions:
     - v1
+    operations:
+    - CREATE
+    - UPDATE
+    resources:
+    - applications
+  sideEffects: None
+- admissionReviewVersions:
+  - v1
+  clientConfig:
+    service:
+      name: webhook-service
+      namespace: system
+      path: /mutate-apps-wuyong-cn-v2-application
+  failurePolicy: Fail
+  matchPolicy: Exact
+  name: mapplication-v2.kb.io
+  rules:
+  - apiGroups:
+    - apps.wuyong.cn
+    apiVersions:
+    - v2
     operations:
     - CREATE
     - UPDATE
@@ -38,12 +60,34 @@ webhooks:
       namespace: system
       path: /validate-apps-wuyong-cn-v1-application
   failurePolicy: Fail
+  matchPolicy: Exact
   name: vapplication-v1.kb.io
   rules:
   - apiGroups:
     - apps.wuyong.cn
     apiVersions:
     - v1
+    operations:
+    - CREATE
+    - UPDATE
+    resources:
+    - applications
+  sideEffects: None
+- admissionReviewVersions:
+  - v1
+  clientConfig:
+    service:
+      name: webhook-service
+      namespace: system
+      path: /validate-apps-wuyong-cn-v2-application
+  failurePolicy: Fail
+  matchPolicy: Exact
+  name: vapplication-v2.kb.io
+  rules:
+  - apiGroups:
+    - apps.wuyong.cn
+    apiVersions:
+    - v2
     operations:
     - CREATE
     - UPDATE

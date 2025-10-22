@@ -47,6 +47,8 @@ func SetupApplicationWebhookWithManager(mgr ctrl.Manager) error {
 }
 
 // TODO(user): EDIT THIS FILE!  THIS IS SCAFFOLDING FOR YOU TO OWN!
+// +kubebuilder:webhook:path=/mutate-apps-wuyong-cn-v2-application,mutating=true,failurePolicy=fail,sideEffects=None,groups=apps.wuyong.cn,resources=applications,verbs=create;update,versions=v2,name=mapplication-v2.kb.io,admissionReviewVersions=v1,matchPolicy=Exact
+
 type ApplicationCustomDefaulter struct {
 	DefaultDeploymentReplicas int32
 }
@@ -69,6 +71,8 @@ func (d *ApplicationCustomDefaulter) Default(_ context.Context, obj runtime.Obje
 }
 
 // validation
+// +kubebuilder:webhook:path=/validate-apps-wuyong-cn-v2-application,mutating=false,failurePolicy=fail,sideEffects=None,groups=apps.wuyong.cn,resources=applications,verbs=create;update,versions=v2,name=vapplication-v2.kb.io,admissionReviewVersions=v1,matchPolicy=Exact
+
 type ApplicationCustomValidator struct {
 	DefaultDeploymentReplicasMax int32
 }

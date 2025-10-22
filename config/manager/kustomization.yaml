@@ -5,4 +5,4 @@ kind: Kustomization
 images:
 - name: controller
   newName: application-operator-plus
-  newTag: v2.2
+  newTag: v2.3
